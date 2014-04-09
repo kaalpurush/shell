@@ -1,0 +1,1 @@
+echo "Enter Bitbucket Username:";read username;echo "Enter Bitbucket Password:";read password;cd /home;for d in `find -maxdepth 1 -type d |cut -d\/ -f2 |grep -xv . |sort`; do printf "$d\n" ; screen -X "bash -c "su $d; cd /home/$d/public_html; expect -c 'spawn git pull expect "*" send "kaal\r"';";exit;"; done ;printf "Done"
